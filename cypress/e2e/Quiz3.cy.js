@@ -10,7 +10,10 @@ describe('OrangeHRM Login Feature', () => {
   it('should login with valid credentials', () => {
     cy.get('[name="username"]').type(validUsername);
     cy.get('[name="password"]').type(validPassword);
+    cy.intercept("GET",'https://opensource-demo.orangehrmlive.com/web/index.php/api/v2/dashboard/employees/locations').as('location');
     cy.contains('button','Login').click();
+    cy.wait('@location').then((intercept) => {
+      expect(intercept.response.statusCode).to.equal(200);})
   });
 
   it('should display error for invalid password', () => {
