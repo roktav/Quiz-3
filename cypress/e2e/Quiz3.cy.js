@@ -1,4 +1,4 @@
-// cypress/e2e/login.spec.js
+// Tugas 17
 
 import LoginPage from '/Users/reihanoktavio/Documents/Sanbercode/cypress/e2e/loginPage.js';
 
